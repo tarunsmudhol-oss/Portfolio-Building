@@ -1,0 +1,1015 @@
+<!doctype html><html><head><meta charset=utf8><meta name=viewport content="width=device-width,initial-scale=1,viewport-fit=cover"><style>:root{color-scheme:light;box-sizing:border-box;padding-top:env(safe-area-inset-top,0px);padding-bottom:env(safe-area-inset-bottom,0px)}html{scroll-padding-top:env(safe-area-inset-top,0px)}body{margin:0;padding:0;font:14px -apple-system,BlinkMacSystemFont,sans-serif;background:#faf9f5;color:#141413}img{max-width:100%}[hidden]:not([hidden=until-found i]){display:none!important}</style></head><body>
+<title>Tarun Mudhol</title>
+<style>
+/* Layout: single-column editorial, oversized display type anchored to a left rail of monospace metadata, with inline project dossiers */
+
+:root {
+  /* light palette (deliberately dark-leaning but kept legible) */
+  --bg: #ece9e2;
+  --bg-raised: #e3dfd4;
+  --fg: #1a1816;
+  --fg-dim: #5a564e;
+  --fg-faint: #8a857a;
+  --rule: #c7c1b2;
+  --accent: #d94a1f;
+  --accent-ink: #b73a12;
+  --signal: #4a7a3c;
+  --warn: #c08b1a;
+  color-scheme: light;
+
+  --f-display: "Fraunces", "Times New Roman", Georgia, serif;
+  --f-body: "Instrument Sans", -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif;
+  --f-mono: "JetBrains Mono", ui-monospace, "SF Mono", Menlo, monospace;
+}
+
+@media (prefers-color-scheme: dark) {
+  :root:not([data-theme="light"]) {
+    --bg: #141311;
+    --bg-raised: #1d1b18;
+    --fg: #ece9e2;
+    --fg-dim: #a8a299;
+    --fg-faint: #6b655c;
+    --rule: #322e28;
+    --accent: #ff6a3d;
+    --accent-ink: #ff8a62;
+    --signal: #8ab878;
+    --warn: #e0b85a;
+    color-scheme: dark;
+  }
+}
+
+:root[data-theme="dark"] {
+  --bg: #141311;
+  --bg-raised: #1d1b18;
+  --fg: #ece9e2;
+  --fg-dim: #a8a299;
+  --fg-faint: #6b655c;
+  --rule: #322e28;
+  --accent: #ff6a3d;
+  --accent-ink: #ff8a62;
+  --signal: #8ab878;
+  --warn: #e0b85a;
+  color-scheme: dark;
+}
+
+* { box-sizing: border-box; }
+
+body {
+  margin: 0;
+  background: var(--bg);
+  color: var(--fg);
+  font-family: var(--f-body);
+  font-size: 16px;
+  line-height: 1.55;
+  -webkit-font-smoothing: antialiased;
+  font-feature-settings: "ss01", "ss02";
+}
+
+a { color: inherit; text-decoration: none; }
+a:focus-visible { outline: 2px solid var(--accent); outline-offset: 3px; border-radius: 2px; }
+
+.page {
+  max-width: 1180px;
+  margin: 0 auto;
+  padding-inline: clamp(20px, 4vw, 56px);
+  padding-block: clamp(28px, 5vw, 72px);
+}
+
+/* ============ TOP BAR ============ */
+.topbar {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  font-family: var(--f-mono);
+  font-size: 11px;
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+  color: var(--fg-dim);
+  padding-bottom: 24px;
+  border-bottom: 1px solid var(--rule);
+  flex-wrap: wrap;
+  gap: 12px;
+}
+.topbar .mark {
+  display: inline-flex;
+  align-items: center;
+  gap: 10px;
+}
+.topbar .mark .dot {
+  width: 7px; height: 7px; border-radius: 50%;
+  background: var(--accent);
+  box-shadow: 0 0 0 3px color-mix(in oklab, var(--accent) 25%, transparent);
+  animation: pulse 2.4s ease-in-out infinite;
+}
+@keyframes pulse {
+  0%, 100% { opacity: 1; transform: scale(1); }
+  50% { opacity: 0.5; transform: scale(0.85); }
+}
+@media (prefers-reduced-motion: reduce) {
+  .topbar .mark .dot { animation: none; }
+}
+.topbar nav {
+  display: flex;
+  gap: 24px;
+  flex-wrap: wrap;
+}
+.topbar nav a:hover { color: var(--fg); }
+.theme-toggle {
+  background: none;
+  border: 1px solid var(--rule);
+  color: var(--fg-dim);
+  font: inherit;
+  padding: 4px 10px;
+  border-radius: 999px;
+  cursor: pointer;
+  letter-spacing: 0.08em;
+}
+.theme-toggle:hover { color: var(--fg); border-color: var(--fg-dim); }
+
+/* ============ HERO ============ */
+.hero {
+  padding-block: clamp(48px, 10vw, 120px) clamp(40px, 7vw, 80px);
+  border-bottom: 1px solid var(--rule);
+  position: relative;
+}
+.hero .meta-rail {
+  font-family: var(--f-mono);
+  font-size: 11px;
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+  color: var(--fg-faint);
+  margin-bottom: 24px;
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(140px, 1fr));
+  gap: 8px 24px;
+}
+.hero .meta-rail span strong {
+  color: var(--fg);
+  font-weight: 500;
+  margin-left: 6px;
+}
+.hero h1 {
+  font-family: var(--f-display);
+  font-weight: 300;
+  font-style: normal;
+  font-size: clamp(56px, 13vw, 180px);
+  line-height: 0.88;
+  letter-spacing: -0.035em;
+  margin: 0 0 24px;
+  text-wrap: balance;
+  font-variation-settings: "opsz" 144, "SOFT" 30;
+}
+.hero h1 em {
+  font-style: italic;
+  font-weight: 300;
+  color: var(--accent);
+  font-variation-settings: "opsz" 144, "SOFT" 100;
+}
+.hero .tagline {
+  font-family: var(--f-display);
+  font-weight: 300;
+  font-size: clamp(20px, 2.6vw, 30px);
+  line-height: 1.35;
+  color: var(--fg-dim);
+  max-width: 32ch;
+  text-wrap: balance;
+  margin: 0 0 40px;
+}
+.hero .tagline em { color: var(--fg); font-style: italic; }
+
+.hero-foot {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(180px, 1fr));
+  gap: 24px;
+  padding-top: 32px;
+  border-top: 1px solid var(--rule);
+}
+.hero-foot .cell .label {
+  font-family: var(--f-mono);
+  font-size: 10px;
+  letter-spacing: 0.1em;
+  text-transform: uppercase;
+  color: var(--fg-faint);
+  display: block;
+  margin-bottom: 6px;
+}
+.hero-foot .cell .val {
+  font-family: var(--f-display);
+  font-size: 22px;
+  line-height: 1.2;
+  color: var(--fg);
+}
+.hero-foot .cell .val small {
+  font-family: var(--f-mono);
+  font-size: 11px;
+  color: var(--fg-dim);
+  display: block;
+  margin-top: 2px;
+  letter-spacing: 0.02em;
+}
+
+/* ============ SECTIONS ============ */
+section { padding-block: clamp(56px, 9vw, 112px); border-bottom: 1px solid var(--rule); }
+section:last-of-type { border-bottom: none; }
+
+.sec-head {
+  display: grid;
+  grid-template-columns: 100px 1fr;
+  gap: 32px;
+  margin-bottom: 48px;
+  align-items: baseline;
+}
+.sec-head .num {
+  font-family: var(--f-mono);
+  font-size: 11px;
+  letter-spacing: 0.1em;
+  color: var(--fg-faint);
+  text-transform: uppercase;
+}
+.sec-head h2 {
+  font-family: var(--f-display);
+  font-weight: 300;
+  font-size: clamp(32px, 5.5vw, 56px);
+  line-height: 1;
+  letter-spacing: -0.025em;
+  margin: 0;
+  text-wrap: balance;
+  font-variation-settings: "opsz" 72;
+}
+.sec-head h2 em { font-style: italic; color: var(--accent); font-weight: 300; }
+
+@media (max-width: 640px) {
+  .sec-head { grid-template-columns: 1fr; gap: 12px; margin-bottom: 32px; }
+}
+
+/* ============ ABOUT ============ */
+.about-grid {
+  display: grid;
+  grid-template-columns: 100px 1fr;
+  gap: 32px;
+}
+.about-grid .body {
+  max-width: 62ch;
+  font-size: 18px;
+  line-height: 1.6;
+}
+.about-grid .body p + p { margin-top: 1.1em; }
+.about-grid .body strong { color: var(--fg); font-weight: 600; }
+.about-grid .body a { color: var(--accent-ink); border-bottom: 1px solid color-mix(in oklab, var(--accent) 40%, transparent); }
+.about-grid .body a:hover { color: var(--accent); border-bottom-color: var(--accent); }
+
+@media (max-width: 640px) {
+  .about-grid { grid-template-columns: 1fr; gap: 0; }
+}
+
+/* ============ PROJECTS ============ */
+.projects { display: flex; flex-direction: column; gap: 0; }
+
+.project {
+  display: grid;
+  grid-template-columns: 100px 1fr;
+  gap: 32px;
+  padding-block: 48px;
+  border-top: 1px solid var(--rule);
+  min-width: 0;
+}
+.project:first-child { border-top: none; padding-top: 0; }
+
+.project .side {
+  font-family: var(--f-mono);
+  font-size: 10px;
+  letter-spacing: 0.1em;
+  text-transform: uppercase;
+  color: var(--fg-faint);
+  min-width: 0;
+}
+.project .side .tag {
+  display: inline-block;
+  padding: 3px 8px;
+  background: var(--bg-raised);
+  border: 1px solid var(--rule);
+  border-radius: 3px;
+  color: var(--fg-dim);
+  margin-bottom: 10px;
+}
+.project .side .year {
+  display: block;
+  color: var(--fg);
+  margin-bottom: 4px;
+}
+
+.project .body { min-width: 0; }
+.project h3 {
+  font-family: var(--f-display);
+  font-weight: 300;
+  font-size: clamp(32px, 5vw, 56px);
+  line-height: 1;
+  letter-spacing: -0.025em;
+  margin: 0 0 6px;
+  font-variation-settings: "opsz" 72;
+}
+.project .kicker {
+  font-family: var(--f-mono);
+  font-size: 11px;
+  color: var(--accent);
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+  margin-bottom: 24px;
+  display: block;
+}
+.project .lede {
+  font-size: 18px;
+  line-height: 1.55;
+  color: var(--fg-dim);
+  max-width: 58ch;
+  margin: 0 0 28px;
+}
+.project .lede strong { color: var(--fg); font-weight: 600; }
+
+.spec {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(180px, 1fr));
+  gap: 20px 32px;
+  padding: 20px 0;
+  border-top: 1px solid var(--rule);
+  border-bottom: 1px solid var(--rule);
+  margin-bottom: 20px;
+}
+.spec .row { min-width: 0; }
+.spec .row dt {
+  font-family: var(--f-mono);
+  font-size: 10px;
+  letter-spacing: 0.1em;
+  text-transform: uppercase;
+  color: var(--fg-faint);
+  margin-bottom: 4px;
+}
+.spec .row dd {
+  margin: 0;
+  font-family: var(--f-mono);
+  font-size: 12px;
+  color: var(--fg);
+  line-height: 1.5;
+  overflow-wrap: anywhere;
+}
+.spec .row dd .pill {
+  display: inline-block;
+  padding: 2px 7px;
+  background: var(--bg-raised);
+  border: 1px solid var(--rule);
+  border-radius: 3px;
+  margin: 2px 2px 2px 0;
+  font-size: 11px;
+}
+
+.stack-list {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 6px;
+  margin-top: 4px;
+}
+.stack-list .chip {
+  font-family: var(--f-mono);
+  font-size: 11px;
+  padding: 3px 9px;
+  background: var(--bg-raised);
+  border: 1px solid var(--rule);
+  border-radius: 999px;
+  color: var(--fg-dim);
+}
+
+.project .links {
+  display: flex;
+  gap: 20px;
+  flex-wrap: wrap;
+  font-family: var(--f-mono);
+  font-size: 11px;
+  letter-spacing: 0.06em;
+  text-transform: uppercase;
+}
+.project .links a {
+  color: var(--accent-ink);
+  border-bottom: 1px solid currentColor;
+  padding-bottom: 1px;
+}
+.project .links a:hover { color: var(--accent); }
+.project .links .ghost { color: var(--fg-faint); border-bottom-style: dashed; cursor: default; }
+.project .links .ghost:hover { color: var(--fg-faint); }
+
+@media (max-width: 640px) {
+  .project { grid-template-columns: 1fr; gap: 16px; }
+  .project .side { display: flex; flex-wrap: wrap; gap: 12px; align-items: center; }
+  .project .side .year { margin-bottom: 0; }
+  .project .side .tag { margin-bottom: 0; }
+}
+
+/* ============ STACK ============ */
+.stack-grid {
+  display: grid;
+  grid-template-columns: 100px 1fr;
+  gap: 32px;
+}
+.stack-cats {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
+  gap: 32px;
+}
+.stack-cat h4 {
+  font-family: var(--f-mono);
+  font-size: 10px;
+  letter-spacing: 0.12em;
+  text-transform: uppercase;
+  color: var(--fg-faint);
+  margin: 0 0 10px;
+  padding-bottom: 8px;
+  border-bottom: 1px solid var(--rule);
+}
+.stack-cat ul {
+  list-style: none;
+  padding: 0; margin: 0;
+  display: flex;
+  flex-wrap: wrap;
+  gap: 4px 10px;
+  font-family: var(--f-body);
+  font-size: 14px;
+  color: var(--fg);
+}
+.stack-cat ul li {
+  position: relative;
+  padding-right: 10px;
+}
+.stack-cat ul li:not(:last-child)::after {
+  content: "·";
+  position: absolute;
+  right: 0;
+  color: var(--fg-faint);
+}
+
+@media (max-width: 640px) {
+  .stack-grid { grid-template-columns: 1fr; gap: 0; }
+}
+
+/* ============ HACKATHONS ============ */
+.hack-grid {
+  display: grid;
+  grid-template-columns: 100px 1fr;
+  gap: 32px;
+}
+.hack-stats {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(140px, 1fr));
+  gap: 2px;
+  margin-bottom: 32px;
+  background: var(--rule);
+  border: 1px solid var(--rule);
+}
+.hack-stats .stat {
+  background: var(--bg);
+  padding: 24px 20px;
+}
+.hack-stats .stat .n {
+  font-family: var(--f-display);
+  font-weight: 300;
+  font-size: 56px;
+  line-height: 0.9;
+  letter-spacing: -0.03em;
+  color: var(--fg);
+  font-variation-settings: "opsz" 72;
+}
+.hack-stats .stat .l {
+  font-family: var(--f-mono);
+  font-size: 10px;
+  letter-spacing: 0.1em;
+  text-transform: uppercase;
+  color: var(--fg-faint);
+  margin-top: 8px;
+}
+.hack-note {
+  font-size: 15px;
+  color: var(--fg-dim);
+  max-width: 56ch;
+  padding: 16px 20px;
+  background: var(--bg-raised);
+  border-left: 2px solid var(--accent);
+  font-style: italic;
+  font-family: var(--f-display);
+  font-weight: 300;
+}
+
+@media (max-width: 640px) {
+  .hack-grid { grid-template-columns: 1fr; gap: 0; }
+  .hack-stats .stat .n { font-size: 44px; }
+}
+
+/* ============ CONTACT ============ */
+.contact {
+  padding-block: clamp(72px, 12vw, 160px);
+  text-align: left;
+}
+.contact-inner {
+  display: grid;
+  grid-template-columns: 100px 1fr;
+  gap: 32px;
+}
+.contact h2 {
+  font-family: var(--f-display);
+  font-weight: 300;
+  font-size: clamp(48px, 10vw, 128px);
+  line-height: 0.9;
+  letter-spacing: -0.035em;
+  margin: 0 0 32px;
+  text-wrap: balance;
+  font-variation-settings: "opsz" 144";
+}
+.contact h2 em { font-style: italic; color: var(--accent); font-weight: 300; }
+
+.contact-lines {
+  display: flex;
+  flex-direction: column;
+  gap: 2px;
+  background: var(--rule);
+  border: 1px solid var(--rule);
+  max-width: 640px;
+}
+.contact-line {
+  background: var(--bg);
+  padding: 18px 22px;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  gap: 16px;
+  min-width: 0;
+}
+.contact-line .label {
+  font-family: var(--f-mono);
+  font-size: 10px;
+  letter-spacing: 0.12em;
+  text-transform: uppercase;
+  color: var(--fg-faint);
+  flex-shrink: 0;
+}
+.contact-line .val {
+  font-family: var(--f-mono);
+  font-size: 14px;
+  color: var(--fg);
+  overflow-wrap: anywhere;
+  text-align: right;
+}
+.contact-line a.val { color: var(--accent-ink); border-bottom: 1px solid currentColor; padding-bottom: 1px; }
+.contact-line a.val:hover { color: var(--accent); }
+.copy-btn {
+  background: none;
+  border: 1px solid var(--rule);
+  color: var(--fg-dim);
+  font: 10px/1 var(--f-mono);
+  letter-spacing: 0.1em;
+  text-transform: uppercase;
+  padding: 5px 8px;
+  margin-left: 10px;
+  border-radius: 3px;
+  cursor: pointer;
+  flex-shrink: 0;
+}
+.copy-btn:hover { color: var(--fg); border-color: var(--fg-dim); }
+.copy-btn.copied { color: var(--signal); border-color: var(--signal); }
+
+@media (max-width: 640px) {
+  .contact-inner { grid-template-columns: 1fr; gap: 0; }
+  .contact-line { flex-direction: column; align-items: flex-start; gap: 6px; }
+  .contact-line .val { text-align: left; }
+}
+
+/* ============ FOOTER ============ */
+footer {
+  padding-block: 32px;
+  border-top: 1px solid var(--rule);
+  font-family: var(--f-mono);
+  font-size: 10px;
+  letter-spacing: 0.1em;
+  text-transform: uppercase;
+  color: var(--fg-faint);
+  display: flex;
+  justify-content: space-between;
+  flex-wrap: wrap;
+  gap: 12px;
+}
+
+/* small typographic details */
+.num-prefix { color: var(--fg-faint); margin-right: 10px; }
+.verb { color: var(--accent); font-style: italic; }
+</style>
+
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Fraunces:ital,opsz,wght,SOFT@0,9..144,300..600,30..100;1,9..144,300..600,30..100&family=Instrument+Sans:ital,wght@0,400..600;1,400..600&family=JetBrains+Mono:wght@400;500&display=swap">
+
+<div class="page">
+
+  <div class="topbar">
+    <span class="mark"><span class="dot"></span>Available for internships &amp; collabs</span>
+    <nav>
+      <a href="#work">Work</a>
+      <a href="#stack">Stack</a>
+      <a href="#hackathons">Hackathons</a>
+      <a href="#contact">Contact</a>
+      <button class="theme-toggle" id="themeToggle" aria-label="Toggle theme">◐ Theme</button>
+    </nav>
+  </div>
+
+  <!-- HERO -->
+  <header class="hero">
+    <div class="meta-rail">
+      <span>Loc <strong>Bengaluru, IN</strong></span>
+      <span>Role <strong>CSE Student</strong></span>
+      <span>Edu <strong>Reva University</strong></span>
+      <span>Shift <strong>Builder, not reader</strong></span>
+    </div>
+
+    <h1>Tarun<br>Mudhol<em>.</em></h1>
+
+    <p class="tagline">I build <em>shipped software</em> — WhatsApp bots, IoT boards, and web apps that have to survive first contact with real users.</p>
+
+    <div class="hero-foot">
+      <div class="cell">
+        <span class="label">Flagship</span>
+        <span class="val">Yukshya<small>WhatsApp AI study assistant · ~2.9k LOC Flask</small></span>
+      </div>
+      <div class="cell">
+        <span class="label">Hardware</span>
+        <span class="val">GreenSync<small>ESP32 plant monitor w/ voice feedback</small></span>
+      </div>
+      <div class="cell">
+        <span class="label">Hackathons</span>
+        <span class="val">13 entered<small>2 wins · multiple finalist runs</small></span>
+      </div>
+      <div class="cell">
+        <span class="label">Env</span>
+        <span class="val">Pop!_OS<small>Dual-boot · nmcli-fluent</small></span>
+      </div>
+    </div>
+  </header>
+
+  <!-- ABOUT -->
+  <section id="about">
+    <div class="sec-head">
+      <span class="num">00 / About</span>
+      <h2>I learn by <em>breaking things</em> and shipping the fix.</h2>
+    </div>
+    <div class="about-grid">
+      <div class="side"></div>
+      <div class="body">
+        <p>I'm a Computer Science &amp; Engineering student at <strong>Reva University</strong>, based in Bengaluru. My work sits at the intersection of practical AI products, IoT hardware, and web applications — I'd rather debug a WhatsApp webhook at 2 AM than finish a textbook chapter.</p>
+        <p>Over the last two years I've shipped a production WhatsApp study bot with payments and referrals (<strong>Yukshya</strong>), wired up an ESP32-based plant monitor that talks back to you (<strong>GreenSync</strong>), and built a personal movie library that uses Telegram as cold storage for 5GB+ files (<strong>MovieVault</strong>). Alongside, I've entered <strong>thirteen hackathons</strong>, won prizes in two of them, and reached a national round once.</p>
+        <p>What I care about: architecture that doesn't collapse under its own weight, security that isn't an afterthought, and interfaces people actually use. I write Python, TypeScript, C, and the occasional stubborn bash script.</p>
+      </div>
+    </div>
+  </section>
+
+  <!-- WORK -->
+  <section id="work">
+    <div class="sec-head">
+      <span class="num">01 / Selected Work</span>
+      <h2>Four projects, four stacks, one <em>stubborn</em> instinct to ship.</h2>
+    </div>
+
+    <div class="projects">
+
+      <!-- YUKSHYA -->
+      <article class="project">
+        <div class="side">
+          <span class="tag">● Production</span>
+          <span class="year">2025 — Now</span>
+          <span>Flagship</span>
+        </div>
+        <div class="body">
+          <span class="kicker">01 — AI × WhatsApp × Education</span>
+          <h3>Yukshya</h3>
+          <p class="lede">A WhatsApp-native AI study assistant for Indian college students. Send a PDF, screenshot, or voice note; ask it to explain, summarise, or quiz you back. Files are encrypted at rest, stored across <strong>Telegram, Google Drive, and Supabase</strong>, and routed through a command-based engine (SAVE / SEND / EXPLAIN / ASK / WEAK).</p>
+          <dl class="spec">
+            <div class="row">
+              <dt>Scale</dt>
+              <dd>~2,900 LOC · Flask backend · 10 command primitives</dd>
+            </div>
+            <div class="row">
+              <dt>Security</dt>
+              <dd>AES-256 at rest · webhook verification · env-isolated secrets</dd>
+            </div>
+            <div class="row">
+              <dt>AI Layer</dt>
+              <dd>Gemini + Gemma · caching · graceful fallback</dd>
+            </div>
+            <div class="row">
+              <dt>Payments</dt>
+              <dd>Razorpay / UPI · 7-day trial · referral milestones</dd>
+            </div>
+            <div class="row">
+              <dt>Stack</dt>
+              <dd>
+                <div class="stack-list">
+                  <span class="chip">Python</span><span class="chip">Flask</span><span class="chip">Meta WhatsApp Cloud</span><span class="chip">Supabase</span><span class="chip">Gemini</span><span class="chip">Razorpay</span><span class="chip">PythonAnywhere</span>
+                </div>
+              </dd>
+            </div>
+            <div class="row">
+              <dt>Deploy</dt>
+              <dd>yukshyabot.pythonanywhere.com · WSGI · health checks</dd>
+            </div>
+          </dl>
+          <div class="links">
+            <span class="ghost">Case study → coming soon</span>
+            <span class="ghost">Live demo → request access</span>
+          </div>
+        </div>
+      </article>
+
+      <!-- GREENSYNC -->
+      <article class="project">
+        <div class="side">
+          <span class="tag">● Hardware</span>
+          <span class="year">2025</span>
+          <span>IoT</span>
+        </div>
+        <div class="body">
+          <span class="kicker">02 — Embedded × Voice × Agri-tech</span>
+          <h3>GreenSync</h3>
+          <p class="lede">A plant that <strong>talks back</strong>. Multi-sensor ESP32 rig that reads soil, light, and environmental data, computes a Plant Health Index, classifies the plant's state, and triggers one of 14 pre-recorded voice responses through a JQ6500 module. Built after the DFPlayer Mini kept flaking.</p>
+          <dl class="spec">
+            <div class="row">
+              <dt>Board</dt>
+              <dd>ESP32 WROOM-32 · 38-pin dev board · 3.3V logic</dd>
+            </div>
+            <div class="row">
+              <dt>Audio Chain</dt>
+              <dd>JQ6500 (16Mbit) → PAM8403 amp → speaker · 14 clips (0001–0014)</dd>
+            </div>
+            <div class="row">
+              <dt>Logic</dt>
+              <dd>Sensor validation → PHI calc → condition classifier → audio cue</dd>
+            </div>
+            <div class="row">
+              <dt>Hard-won lessons</dt>
+              <dd>GPIO constraints · voltage mismatches · common-ground discipline</dd>
+            </div>
+            <div class="row">
+              <dt>Stack</dt>
+              <dd>
+                <div class="stack-list">
+                  <span class="chip">ESP32</span><span class="chip">C++</span><span class="chip">Arduino IDE</span><span class="chip">Soil / DHT sensors</span><span class="chip">PAM8403</span>
+                </div>
+              </dd>
+            </div>
+          </dl>
+          <div class="links">
+            <span class="ghost">Build log → in progress</span>
+          </div>
+        </div>
+      </article>
+
+      <!-- MOVIEVAULT -->
+      <article class="project">
+        <div class="side">
+          <span class="tag">● Personal</span>
+          <span class="year">2026</span>
+          <span>Web</span>
+        </div>
+        <div class="body">
+          <span class="kicker">03 — Full-stack × Clever storage</span>
+          <h3>MovieVault</h3>
+          <p class="lede">A personal movie library that treats <strong>Telegram as a 5GB+ cold storage</strong>. Next.js UI handles large-file uploads with progress state and metadata capture; a Node + Prisma backend streams the file to Telegram, stores metadata in Postgres, and plays it back through a custom player. Built the way I like my own tools: lean, no vendor lock, works offline where possible.</p>
+          <dl class="spec">
+            <div class="row">
+              <dt>Frontend</dt>
+              <dd>Next.js · TypeScript · Tailwind · UploadSheet component</dd>
+            </div>
+            <div class="row">
+              <dt>Backend</dt>
+              <dd>Node · Express · Prisma ORM · PostgreSQL</dd>
+            </div>
+            <div class="row">
+              <dt>Storage</dt>
+              <dd>Telegram Bot API as object store · metadata in Postgres</dd>
+            </div>
+            <div class="row">
+              <dt>Known fights</dt>
+              <dd>ERESOLVE + esbuild · PATH on Windows · special-char DB passwords</dd>
+            </div>
+            <div class="row">
+              <dt>Stack</dt>
+              <dd>
+                <div class="stack-list">
+                  <span class="chip">Next.js</span><span class="chip">TypeScript</span><span class="chip">Node</span><span class="chip">Express</span><span class="chip">Prisma</span><span class="chip">PostgreSQL</span><span class="chip">Telegram Bot API</span>
+                </div>
+              </dd>
+            </div>
+            <div class="row">
+              <dt>Source</dt>
+              <dd><a href="https://github.com/tarunsmudhol-oss/MovieVault" rel="noopener">github.com/tarunsmudhol-oss/MovieVault</a></dd>
+            </div>
+          </dl>
+          <div class="links">
+            <a href="https://github.com/tarunsmudhol-oss/MovieVault" rel="noopener">View repo →</a>
+          </div>
+        </div>
+      </article>
+
+      <!-- MARKETIQ -->
+      <article class="project">
+        <div class="side">
+          <span class="tag">● Hackathon</span>
+          <span class="year">2025</span>
+          <span>Agri-tech</span>
+        </div>
+        <div class="body">
+          <span class="kicker">04 — Civic data × Mobile-first × Vernacular</span>
+          <h3>MarketIQ / Kisan Portal</h3>
+          <p class="lede">A one-stop agri-information platform for Indian farmers. Pulls live commodity prices and horticulture data from government open APIs; surfaces them through a dashboard, a mentor module, mapping, and a lightweight social layer. Built under hackathon constraints — the goal was <strong>a demo that doesn't lie</strong>, not an enterprise rollout.</p>
+          <dl class="spec">
+            <div class="row">
+              <dt>Modules</dt>
+              <dd>Smart Agri · SWAMI Farmers AI · Krishisetu · Mentor · Market · Maps</dd>
+            </div>
+            <div class="row">
+              <dt>Data</dt>
+              <dd>UPAg Open API · AGMARKNET · data.gov.in · NHB · Dept. of Consumer Affairs</dd>
+            </div>
+            <div class="row">
+              <dt>Stack</dt>
+              <dd>
+                <div class="stack-list">
+                  <span class="chip">React</span><span class="chip">Node</span><span class="chip">REST</span><span class="chip">Government Open APIs</span>
+                </div>
+              </dd>
+            </div>
+          </dl>
+          <div class="links">
+            <span class="ghost">Deck → on request</span>
+          </div>
+        </div>
+      </article>
+
+    </div>
+  </section>
+
+  <!-- STACK -->
+  <section id="stack">
+    <div class="sec-head">
+      <span class="num">02 / Stack</span>
+      <h2>Tools I <em>actually</em> use, not just a resume list.</h2>
+    </div>
+
+    <div class="stack-grid">
+      <div class="side"></div>
+      <div class="stack-cats">
+        <div class="stack-cat">
+          <h4>Languages</h4>
+          <ul><li>Python</li><li>JavaScript</li><li>TypeScript</li><li>Java</li><li>C</li><li>C++</li><li>SQL</li><li>HTML</li><li>CSS</li></ul>
+        </div>
+        <div class="stack-cat">
+          <h4>Frontend</h4>
+          <ul><li>React</li><li>Next.js</li><li>Tailwind</li></ul>
+        </div>
+        <div class="stack-cat">
+          <h4>Backend</h4>
+          <ul><li>Node</li><li>Express</li><li>Flask</li><li>FastAPI</li></ul>
+        </div>
+        <div class="stack-cat">
+          <h4>Data</h4>
+          <ul><li>PostgreSQL</li><li>MongoDB</li><li>Prisma</li><li>Supabase</li><li>Firebase</li></ul>
+        </div>
+        <div class="stack-cat">
+          <h4>AI / APIs</h4>
+          <ul><li>Gemini</li><li>Gemma</li><li>WhatsApp Cloud</li><li>Telegram Bot</li><li>Google APIs</li><li>Razorpay</li></ul>
+        </div>
+        <div class="stack-cat">
+          <h4>Hardware</h4>
+          <ul><li>ESP32</li><li>Arduino</li><li>JQ6500</li><li>PAM8403</li><li>Soil / env. sensors</li></ul>
+        </div>
+        <div class="stack-cat">
+          <h4>Environment</h4>
+          <ul><li>Pop!_OS</li><li>Linux</li><li>VS Code</li><li>Git &amp; GitHub</li><li>nmcli / bash</li></ul>
+        </div>
+        <div class="stack-cat">
+          <h4>Practice</h4>
+          <ul><li>LeetCode</li><li>HackerRank</li><li>DSA</li></ul>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- HACKATHONS -->
+  <section id="hackathons">
+    <div class="sec-head">
+      <span class="num">03 / Hackathons</span>
+      <h2>Thirteen events, a <em>working</em> prototype each time.</h2>
+    </div>
+
+    <div class="hack-grid">
+      <div class="side"></div>
+      <div>
+        <div class="hack-stats">
+          <div class="stat"><div class="n">13</div><div class="l">Hackathons entered</div></div>
+          <div class="stat"><div class="n">02</div><div class="l">Prizes won</div></div>
+          <div class="stat"><div class="n">01</div><div class="l">National round</div></div>
+          <div class="stat"><div class="n">11+</div><div class="l">Prototypes shipped</div></div>
+        </div>
+        <p class="hack-note">What I optimise for in 36 hours: a sharp problem statement, a demo that doesn't crash on stage, and an architecture a judge can understand in 90 seconds. SIH 2026 is next.</p>
+      </div>
+    </div>
+  </section>
+
+  <!-- CONTACT -->
+  <section id="contact" class="contact">
+    <div class="contact-inner">
+      <div class="side"></div>
+      <div>
+        <h2>Let's build <em>something.</em></h2>
+        <div class="contact-lines">
+          <div class="contact-line">
+            <span class="label">Email</span>
+            <span style="display:flex;align-items:center;min-width:0;">
+              <a class="val" href="mailto:mudholtarun@gmail.com">mudholtarun@gmail.com</a>
+              <button class="copy-btn" data-copy="mudholtarun@gmail.com">Copy</button>
+            </span>
+          </div>
+          <div class="contact-line">
+            <span class="label">GitHub</span>
+            <a class="val" href="https://github.com/tarunsmudhol-oss" rel="noopener">github.com/tarunsmudhol-oss</a>
+          </div>
+          <div class="contact-line">
+            <span class="label">Based in</span>
+            <span class="val">Bengaluru, Karnataka · IST (UTC+05:30)</span>
+          </div>
+          <div class="contact-line">
+            <span class="label">Status</span>
+            <span class="val">Open to internships, SIH collabs, freelance builds</span>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <footer>
+    <span>© 2026 Tarun Mudhol</span>
+    <span>Built with stubbornness &amp; HTML</span>
+  </footer>
+</div>
+
+<script>
+  // Theme toggle (localStorage, defensively)
+  (function() {
+    const toggle = document.getElementById('themeToggle');
+    if (!toggle) return;
+
+    let stored = null;
+    try { stored = localStorage.getItem('tm-theme'); } catch (e) {}
+
+    const root = document.documentElement;
+    if (stored === 'dark' || stored === 'light') {
+      root.setAttribute('data-theme', stored);
+    }
+
+    toggle.addEventListener('click', () => {
+      const current = root.getAttribute('data-theme');
+      let next;
+      if (current === 'dark') next = 'light';
+      else if (current === 'light') next = 'dark';
+      else {
+        // no explicit theme — flip against system
+        const prefersDark = window.matchMedia('(prefers-color-scheme: dark)').matches;
+        next = prefersDark ? 'light' : 'dark';
+      }
+      root.setAttribute('data-theme', next);
+      try { localStorage.setItem('tm-theme', next); } catch (e) {}
+    });
+  })();
+
+  // Copy buttons
+  document.querySelectorAll('.copy-btn').forEach(btn => {
+    btn.addEventListener('click', async () => {
+      const text = btn.getAttribute('data-copy');
+      if (!text) return;
+      try {
+        await navigator.clipboard.writeText(text);
+        const orig = btn.textContent;
+        btn.textContent = 'Copied';
+        btn.classList.add('copied');
+        setTimeout(() => {
+          btn.textContent = orig;
+          btn.classList.remove('copied');
+        }, 1600);
+      } catch (e) {
+        // Fallback: select the sibling link text
+        const link = btn.previousElementSibling;
+        if (link && window.getSelection) {
+          const range = document.createRange();
+          range.selectNodeContents(link);
+          const sel = window.getSelection();
+          sel.removeAllRanges();
+          sel.addRange(range);
+        }
+      }
+    });
+  });
+</script>
+
+</body></html>
